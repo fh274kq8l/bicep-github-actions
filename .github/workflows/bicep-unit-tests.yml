@@ -10,7 +10,7 @@ on:
     - main
 
 env:
-  LOCATION: "eastus"
+  LOCATION: "westeurope"
   
 #Special permissions required for OIDC authentication
 permissions:

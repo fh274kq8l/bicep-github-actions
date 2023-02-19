@@ -15,7 +15,7 @@ permissions:
   pull-requests: write
   
 env:
-  LOCATION: "eastus"
+  LOCATION: "westeurope"
 
 jobs:
   bicep-whatif:
