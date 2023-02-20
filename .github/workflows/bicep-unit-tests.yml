@@ -2,9 +2,9 @@ name: 'Bicep Unit Tests'
 
 # We run on just PRs + main since this validate requires full read/write permissions to Azure and we can't do wildcards for the branch name in Azure OIDC federated credentials
 on:
-  push:
-    branches:
-    - main  
+  # push:
+  #   branches:
+  #   - main  
   pull_request:
     branches:
     - main
