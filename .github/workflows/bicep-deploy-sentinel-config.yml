@@ -21,6 +21,7 @@ env:
 
 jobs:
   defender-for-devops:
+    name: 'Defender for DevOps'
     # MSDO runs on windows-latest and ubuntu-latest.
     # macos-latest supporting coming soon
     runs-on: windows-latest
@@ -48,6 +49,7 @@ jobs:
   bicep-whatif:
     name: 'Bicep Whatif'
     runs-on: ubuntu-latest
+    needs: [defender-for-devops]
     # environment: production
 
     steps:
@@ -149,6 +151,6 @@ jobs:
       with:
         deploymentName: ${{ github.run_number }}
         resourceGroupName: ${{ env.AZURE_RESOURCEGROUP_NAME }}
-        template: ./deploy/main.bicep
+        template: main.bicep
         parameters: environmentType=${{ env.ENVIRONMENT }}
             
