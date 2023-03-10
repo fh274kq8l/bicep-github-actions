@@ -1,6 +1,6 @@
 // =========== main.bicep ===========
-// targetScope = 'subscription'
-targetScope = 'resourceGroup'
+targetScope = 'subscription'
+//targetScope = 'resourceGroup'
 
 //param location string = deployment().location
 param location string = 'westeurope'
@@ -15,10 +15,9 @@ param workspaceRetentionDays int
 // Sentinel Solution
 param solutionName string
 
-// resource rg 'Microsoft.Resources/resourceGroups@2021-01-01' = {
-//   name: rgName
-//   location: location
-// }
+resource rg 'Microsoft.Resources/resourceGroups@2021-01-01' existing = {
+  name: rgName
+}
 
 // module rg 'modules/rg.bicep' = {
 //   name: rgName
