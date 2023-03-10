@@ -15,7 +15,7 @@
             "value": "PerGB2018"
         },
         "workspaceRetentionDays": {
-            "value": "30"
+            "value": 30
         },
         "solutionName": {
             "value": "sentinelSolution"
