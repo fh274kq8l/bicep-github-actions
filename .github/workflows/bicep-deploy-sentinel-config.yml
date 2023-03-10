@@ -17,7 +17,7 @@ permissions:
 env:
   LOCATION: "westeurope"
   ENVIRONMENT: "production"
-  #AZURE_RESOURCEGROUP_NAME: "rg-sentinelcicd-dev-001"
+  AZURE_RESOURCEGROUP_NAME: "rg-sentinelcicd-dev-001"
 
 # jobs:
 #   defender-for-devops:
@@ -149,9 +149,13 @@ jobs:
           client-id: ${{ secrets.AZURE_CLIENT_ID }}
           tenant-id: ${{ secrets.AZURE_TENANT_ID }}
           subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+      - uses: Azure/cli@v1
+        with:
+          inlineScript: |
+            az group create -l westeurope -n ${{ env.AZURE_RESOURCEGROUP_NAME }}
       - uses: azure/arm-deploy@v1
         with:
           deploymentName: ${{ github.run_number }}
-          #resourceGroupName: ${{ env.AZURE_RESOURCEGROUP_NAME }}
+          resourceGroupName: ${{ env.AZURE_RESOURCEGROUP_NAME }}
           template: main.bicep
           parameters: parameters-main.json environmentType=${{ env.ENVIRONMENT }}
