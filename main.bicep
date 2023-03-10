@@ -36,6 +36,9 @@ module sentinelModule 'modules/sentinelModule.bicep' = {
     workspaceRetentionDays: workspaceRetentionDays
     solutionName: solutionName
   }
+  dependsOn: [
+    rg
+  ]
 }
 
 
