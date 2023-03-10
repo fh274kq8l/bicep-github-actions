@@ -13,18 +13,18 @@ param workspaceRetentionDays int
 // Sentinel Solution
 param solutionName string
 
-// resource resourceGroup 'Microsoft.Resources/resourceGroups@2021-01-01' = {
-//   name: 'rg-bicep-github-actions'
-//   location: location
-// }
-
-module rg 'modules/rg.bicep' = {
+resource rg 'Microsoft.Resources/resourceGroups@2021-01-01' = {
   name: rgName
-  params: {
-    rgName: rgName
-    location: location
-  } 
+  location: location
 }
+
+// module rg 'modules/rg.bicep' = {
+//   name: rgName
+//   params: {
+//     rgName: rgName
+//     location: location
+//   } 
+// }
 
 module sentinelModule 'modules/sentinelModule.bicep' = {
   scope: resourceGroup(rg.name)
@@ -36,9 +36,6 @@ module sentinelModule 'modules/sentinelModule.bicep' = {
     workspaceRetentionDays: workspaceRetentionDays
     solutionName: solutionName
   }
-  dependsOn: [
-    rg
-  ]
 }
 
 
