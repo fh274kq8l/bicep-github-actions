@@ -79,6 +79,7 @@ jobs:
           az deployment sub validate \
             --name validate-${{ github.run_id }} \
             --template-file main.bicep \
+            --parameters @parameters-main.json \
             --location $LOCATION     
 
     # Preview changes
@@ -89,6 +90,7 @@ jobs:
           az deployment sub what-if \
             --name whatif-${{ github.run_id }} \
             --template-file main.bicep \
+            --parameters @parameters-main.json \
             --location $LOCATION > whatif
             
       # Create string output of Whatif
@@ -152,5 +154,5 @@ jobs:
         deploymentName: ${{ github.run_number }}
         #resourceGroupName: ${{ env.AZURE_RESOURCEGROUP_NAME }}
         template: main.bicep
-        parameters: ./parameters-main.json environmentType=${{ env.ENVIRONMENT }}
+        parameters: parameters-main.json environmentType=${{ env.ENVIRONMENT }}
             
