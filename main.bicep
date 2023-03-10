@@ -1,7 +1,8 @@
 // =========== main.bicep ===========
 targetScope = 'subscription'
 
-param location string = deployment().location
+//param location string = deployment().location
+param location string = 'westeurope'
 
 param rgName string
 
