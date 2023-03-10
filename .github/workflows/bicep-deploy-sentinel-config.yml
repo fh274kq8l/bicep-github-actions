@@ -152,5 +152,5 @@ jobs:
         deploymentName: ${{ github.run_number }}
         #resourceGroupName: ${{ env.AZURE_RESOURCEGROUP_NAME }}
         template: main.bicep
-        parameters: parameters-main.json environmentType=${{ env.ENVIRONMENT }}
+        parameters: ./parameters-main.json environmentType=${{ env.ENVIRONMENT }}
             
