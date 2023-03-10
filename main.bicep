@@ -27,7 +27,7 @@ module rg 'modules/rg.bicep' = {
 }
 
 module sentinelModule 'modules/sentinelModule.bicep' = {
-  scope: resourceGroup(rgName)
+  scope: resourceGroup(rg.name)
   name: workspaceName
   params: {
     location: location
