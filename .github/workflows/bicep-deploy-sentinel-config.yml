@@ -133,7 +133,6 @@ jobs:
   #               repo: context.repo.repo,
   #               body: body
   #           })
-            
   bicep-deploy:
     name: 'Bicep Deploy'
     #TODO can we easily determine if there are any changes to deploy?
