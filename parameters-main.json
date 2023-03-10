@@ -1,0 +1,24 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "rgName": {
+            "value": "rg-sentinelcicd-dev-001"
+        },
+        "location": {
+            "value": "westeurope"
+        },
+        "workspaceName": {
+            "value": "log-sentinel-dev-001"
+        },
+        "workspaceSku": {
+            "value": "PerGB2018"
+        },
+        "workspaceRetentionDays": {
+            "value": "30"
+        },
+        "solutionName": {
+            "value": "sentinelSolution"
+        }
+    }
+}
