@@ -17,7 +17,7 @@ permissions:
 env:
   LOCATION: "westeurope"
   ENVIRONMENT: "production"
-  AZURE_RESOURCEGROUP_NAME: "rg-sentinelcicd-dev-001"
+  #AZURE_RESOURCEGROUP_NAME: "rg-sentinelcicd-dev-001"
 
 # jobs:
 #   defender-for-devops:
@@ -152,6 +152,6 @@ jobs:
       - uses: azure/arm-deploy@v1
         with:
           deploymentName: ${{ github.run_number }}
-          resourceGroupName: ${{ env.AZURE_RESOURCEGROUP_NAME }}
+          #resourceGroupName: ${{ env.AZURE_RESOURCEGROUP_NAME }}
           template: main.bicep
           parameters: parameters-main.json environmentType=${{ env.ENVIRONMENT }}
