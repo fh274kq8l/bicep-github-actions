@@ -1,7 +1,7 @@
 // =========== main.bicep ===========
-targetScope = 'resourceGroup'
+targetScope = 'subscription'
 
-param location string = resourceGroup().location
+param location string = deployment().location
 
 param rgName string
 
@@ -20,34 +20,47 @@ param solutionName string
 
 module rg 'modules/rg.bicep' = {
   name: rgName
-  scope: subscription()
   params: {
     rgName: rgName
     location: location
   } 
 }
 
-resource sentinelWorkspace 'Microsoft.OperationalInsights/workspaces@2022-10-01' = {
+module sentinelModule 'modules/sentinelModule.bicep' = {
+  scope: resourceGroup(rgName)
   name: workspaceName
-  location: location
-  properties: {
-    sku: {
-      name: workspaceSku
-    }
-    retentionInDays: workspaceRetentionDays
+  params: {
+    location: location
+    workspaceName: workspaceName
+    workspaceSku: workspaceSku
+    workspaceRetentionDays: workspaceRetentionDays
+    solutionName: solutionName
   }
 }
 
-resource sentinelSolution 'Microsoft.OperationsManagement/solutions@2015-11-01-preview' = {
-  name: solutionName
-  location: location
-  properties: {
-    workspaceResourceId: sentinelWorkspace.id
-  }
-  plan: {
-    name: solutionName
-    publisher: 'Microsoft'
-    product: 'OMSGallery/SecurityInsights'
-    promotionCode: ''
-  }
-}
+
+
+// resource sentinelWorkspace 'Microsoft.OperationalInsights/workspaces@2022-10-01' = {
+//   name: workspaceName
+//   location: location
+//   properties: {
+//     sku: {
+//       name: workspaceSku
+//     }
+//     retentionInDays: workspaceRetentionDays
+//   }
+// }
+
+// resource sentinelSolution 'Microsoft.OperationsManagement/solutions@2015-11-01-preview' = {
+//   name: solutionName
+//   location: location
+//   properties: {
+//     workspaceResourceId: sentinelWorkspace.id
+//   }
+//   plan: {
+//     name: solutionName
+//     publisher: 'Microsoft'
+//     product: 'OMSGallery/SecurityInsights'
+//     promotionCode: ''
+//   }
+// }
