@@ -13,9 +13,6 @@ param workspaceName string
 param workspaceSku string
 param workspaceRetentionDays int
 
-// Sentinel Solution
-param solutionName string
-
 // resource rg 'Microsoft.Resources/resourceGroups@2021-01-01' existing = {
 //   name: rgName
 // }
