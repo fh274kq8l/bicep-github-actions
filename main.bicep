@@ -36,7 +36,6 @@ module sentinelModule 'modules/sentinelModule.bicep' = {
     workspaceName: workspaceName
     workspaceSku: workspaceSku
     workspaceRetentionDays: workspaceRetentionDays
-    solutionName: solutionName
   }
 }
 

@@ -2,7 +2,6 @@ param workspaceName string
 param location string
 param workspaceSku string
 param workspaceRetentionDays int
-param solutionName string
 
 resource sentinelWorkspace 'Microsoft.OperationalInsights/workspaces@2022-10-01' = {
   name: workspaceName
@@ -15,14 +14,14 @@ resource sentinelWorkspace 'Microsoft.OperationalInsights/workspaces@2022-10-01'
   }
 }
 
-resource sentinelSolution 'Microsoft.OperationsManagement/solutions@2015-11-01-preview' = {
-  name: solutionName
+resource sentinel 'Microsoft.OperationsManagement/solutions@2015-11-01-preview' = {
+  name: 'SecurityInsights(${workspaceName})'
   location: location
   properties: {
     workspaceResourceId: sentinelWorkspace.id
   }
   plan: {
-    name: solutionName
+    name: 'SecurityInsights(${workspaceName})'
     publisher: 'Microsoft'
     product: 'OMSGallery/SecurityInsights'
     promotionCode: ''

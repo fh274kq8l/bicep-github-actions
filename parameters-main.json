@@ -16,9 +16,6 @@
         },
         "workspaceRetentionDays": {
             "value": 30
-        },
-        "solutionName": {
-            "value": "sentinelSolutionName"
         }
     }
 }
