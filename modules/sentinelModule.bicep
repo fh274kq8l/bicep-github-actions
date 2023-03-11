@@ -24,7 +24,7 @@ resource sentinelSolution 'Microsoft.OperationsManagement/solutions@2015-11-01-p
   plan: {
     name: solutionName
     publisher: 'Microsoft'
-    //product: 'OMSGallery/SecurityInsights'
+    product: 'OMSGallery/SecurityInsights'
     promotionCode: ''
   }
 }
